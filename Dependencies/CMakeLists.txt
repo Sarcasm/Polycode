@@ -125,6 +125,13 @@ ENDIF(APPLE)
     SET(internal_ASSIMP ON)
 #ENDIF(ASSIMP_FOUND)
 
+#FIND_PACKAGE(LibRocket)
+#IF(LIBROCKET_FOUND)
+#    SET(internal_LIBROCKET OFF)
+#ELSE(LIBROCKET_FOUND)
+    SET(internal_LIBROCKET ON)
+#ENDIF(LIBROCKET_FOUND)
+
 OPTION(POLYCODE_DEPS_GLEXT "Download GL/glext.h header" ${internal_GLEXT})
 OPTION(POLYCODE_DEPS_WGLEXT "Download GL/wglext.h header" ${internal_WGLEXT})
 
@@ -138,6 +145,7 @@ OPTION(POLYCODE_DEPS_LUA51 "Download and build the Lua51 package" ${internal_LUA
 OPTION(POLYCODE_DEPS_BOX2D "Download and build the Box2D package" ${internal_BOX2D})
 OPTION(POLYCODE_DEPS_BULLET "Download and build the Bullet package" ${internal_BULLET})
 OPTION(POLYCODE_DEPS_ASSIMP "Download and build the Assimp package" ${internal_ASSIMP})
+OPTION(POLYCODE_DEPS_LIBROCKET "Download and build the libRocket package" ${internal_LIBROCKET})
 
 IF(POLYCODE_DEPS_PNG)
     INCLUDE(ExternalPNG)
@@ -166,6 +174,10 @@ ENDIF(POLYCODE_DEPS_LUA51)
 IF(POLYCODE_DEPS_BOX2D)
     INCLUDE(ExternalBox2D)
 ENDIF(POLYCODE_DEPS_BOX2D)
+
+IF(POLYCODE_DEPS_LIBROCKET)
+    INCLUDE(ExternallibRocket)
+ENDIF(POLYCODE_DEPS_LIBROCKET)
 
 IF(POLYCODE_DEPS_BULLET)
     INCLUDE(ExternalBullet)
