@@ -30,10 +30,10 @@ ExternalProject_Add(librocket
     DOWNLOAD_DIR ${POLYCODE_DEPS_DOWNLOAD_DIR}
 
     GIT_REPOSITORY https://github.com/lloydw/libRocket.git
-    GIT_TAG 524e9f6e83eeceddfa5c9e3a31908adf3e774e97
+    GIT_TAG cc0312f0ecc7ae8166249d7c2e7ce2f5cb92684f
 
     # LibRocket's source isn't in the top level directory so add a dummy file to set cmake right
-    PATCH_COMMAND cmake -E echo ADD_SUBDIRECTORY(Build) > <SOURCE_DIR>/CMakeLists.txt
+    PATCH_COMMAND ${CMAKE_COMMAND} -E echo ADD_SUBDIRECTORY(Build) > <SOURCE_DIR>/CMakeLists.txt
     
     INSTALL_DIR ${POLYCODE_DEPS_MODULES_PREFIX}
     CMAKE_ARGS ${librocket_CMAKE_ARGS}
